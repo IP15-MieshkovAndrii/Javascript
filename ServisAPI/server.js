@@ -101,7 +101,7 @@ app.post('/add-post', (req, res) => {
         let posts = [];
         try {
           if (fs.existsSync(path)) {
-            posts = fs.readFileSync(path)
+            posts = JSON.parse(fs.readFileSync(path));
           }
           posts.push(post);
           fs.writeFile(path, JSON.stringify(posts), (err)=>{
