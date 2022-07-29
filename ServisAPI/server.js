@@ -3,6 +3,7 @@ const path = require('path');
 const morgan = require('morgan');
 const fs = require('fs');
 
+global.flag = true;
 
 const app = express();
 
@@ -67,16 +68,11 @@ app.get('/posts', (req, res) => {
     const Post = fs.readFileSync('base.json', 'utf8');
     console.log(Post);
     const Posts = JSON.parse(Post);
-    console.log(Posts.table);
-    let p = [];
-    p = Posts.table;
-    p
-        .find()
-        .then((posts) => res.render(createPath('posts'), {posts, title}))
-        .catch((error) => {
-            console.log(error);
-            res.render(createPath('error'), {title: 'Error'})
-        });
+    console.log(Posts);
+    
+    let posts = Posts;
+    res.render(createPath('posts'), {posts, title})
+
 });
 
 app.post('/add-post', (req, res) => {
@@ -100,14 +96,41 @@ app.post('/add-post', (req, res) => {
         //     if(err) console.log(err)
         //     else console.log('File saved')
         // });
-        let p = {
-            table: []
-        }
-        p.table.push(post);
-        fs.writeFile("base.json", JSON.stringify(p), 'binary', (err)=>{
+
+        const path = 'base.json'
+        let posts = [];
+        try {
+          if (fs.existsSync(path)) {
+            posts = fs.readFileSync(path)
+          }
+          posts.push(post);
+          fs.writeFile(path, JSON.stringify(posts), (err)=>{
             if(err) console.log(err)
             else console.log('File saved')
-        });
+            });
+        } catch(err) {
+          console.error(err)
+        }
+
+        
+        // fs.readFile('base.json', 'binary', function readFileCallback(err, data){
+        //     if (err){
+        //         let p = {
+        //             table: []
+        //         }
+        //         p.table.push(post);
+        //         fs.writeFile("base.json", JSON.stringify(p), 'binary', (err)=>{
+        //             if(err) console.log(err)
+        //             else console.log('File saved')
+        //         });
+        //     } else {
+        //         p = JSON.parse(data);
+        //         p.table.push(post);
+        //         fs.writeFile('base.json', JSON.stringify(p), 'binary', (err)=>{
+        //             if(err) console.log(err)
+        //             else console.log('File saved')
+        //         });
+        //     }});
     // exports.post = post;
     }
 });
