@@ -87,8 +87,10 @@ body {
     gap: 20px;
   }
   
+  .MyDiv,
   input,
-  textarea {
+  textarea
+   {
     min-height: 30px;
     border: 1px solid #000;
     background-color: rgba(0, 0, 0, 0.4);
@@ -136,7 +138,7 @@ body {
     margin-top: 0;
   }
   
-  .contacts li {
+  .rate li {
     list-style-type: circle;
     padding-left: 20px;
     list-style-position: inside;

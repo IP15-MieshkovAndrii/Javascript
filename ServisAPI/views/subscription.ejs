@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/nav.ejs') %>
+  <h1>
+    Підпишіться, щоб отримувати поточний курс біткоїну!!!
+  </h1>
+  <form id="subscribe-form" method="post" action="/subscription">
+    <div class="form-info">
+      <label>Ваша електронна пошта(email)
+        <input type="text" name="title">
+      </label>
+    </div>
+    <div class="form-button">
+      <input type="submit" value="Підписатись">
+    </div>
+  </form>
+</body>
+</html>

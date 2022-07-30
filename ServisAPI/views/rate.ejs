@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/nav.ejs') %>
+  <h1>Поточний курс біткоїну в гривні:</h1>
+  <h2>Біткоїн – Українська гривня(BTС/UAH) - <b><%= rate %></b></h2>
+
+  <h2>Калькулятор: </h2>
+  <form id="calculate-form" method="calculate" action="/rate">
+    <div class="form-info">
+      <label>
+        <input type="number" min="0" name="number">
+        <p align="right"> BTC </p>
+        <div class="form-button">
+          <input type="submit" value="Перевести в грн">
+        </div>
+      </label>
+      <label>
+        <div class="MyDiv">
+          <%= numberUAH || ''%>
+        </div>
+        <p align="right"> UAH </p>
+      </label>
+    </div>
+  </form>
+  
+
+</body>
+</html>
