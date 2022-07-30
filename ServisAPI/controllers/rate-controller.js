@@ -1,6 +1,8 @@
 const createPath = require('../helpers/create-path')
 const superagent = require('superagent')
 
+
+
 const getRate = (req, res) => {
     const title = 'Rate';
     superagent

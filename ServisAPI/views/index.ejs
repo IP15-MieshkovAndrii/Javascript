@@ -5,5 +5,18 @@
   <%- include('./partials/nav.ejs') %>
   <h1>GSES2 BTC application</h1>
   <p>Вітаю, на цьому сайті ви можете дізнатися поточний курс біткоіну (BTC) у гривні (UAH).</p>
+  <br>
+  <p align="right"> Якщо ви адміністратор, можете відправити підписникам поточний курс біткоїна.</p>
+    <form id="admin-form" method="post" action="/">
+    <div class="form-info">
+      <label>Пароль адміністратора
+        <input type="text" name="password">
+      </label>
+    </div>
+    <div class="form-button">
+      <input type="submit" value="Відправити поточний курс">
+    </div>
+    </form>
+  
 </body>
 </html>

@@ -26,11 +26,9 @@ const addMail = (req, res) => {
         try {
           if (fs.existsSync(path)) {
             mails = JSON.parse(fs.readFileSync(path));
-            console.log(mails);
-            console.log(mail.email);
           }
           const result = mails.find(({ email }) => email === mail.email)
-        console.log(result);
+
           if(!result){
             mails.push(mail);
             fs.writeFile(path, JSON.stringify(mails), (err)=>{
