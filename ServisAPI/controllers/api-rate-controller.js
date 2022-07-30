@@ -1,12 +1,22 @@
-const createPath = require('../helpers/create-path')
-const superagent = require('superagent')
-
-const handleError = (req, res) => {
-    res.status(500).send(error);
-}
 
 const getRate = (req, res) => {
-    res.send("{}");
+    const rate = {
+        'tags': "rate",
+        'summary': "Отримати поточний курс BTC до UAH",
+        'description': "Запит має повертати поточний курс BTC до UAH використовуючи будь-який third party сервіс з публічним АРІ",
+        'operationId': "rate",
+        'produces':"application/json",
+        'responses': {
+            "200":{
+            'description': "Повертається актуальний курс BTC до UAH",
+            'schema' :{
+                'type': "number",
+            },
+          },
+          "400":
+            {'description': "Invalid status value"},
+        }}  
+    res.send(rate)
 }
 
 module.exports = getRate;
